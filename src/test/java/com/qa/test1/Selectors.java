@@ -2,7 +2,6 @@ package com.qa.test1;
 
 import org.testng.Assert;
 
-import java.util.Iterator;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -188,11 +187,11 @@ public class Selectors {
 		if (driver.findElement(addressCity).isDisplayed() == true) {
 			System.out.println("Shopping cart has been displayed");
 			List<WebElement> city = driver.findElements(addressCity);
-			Iterator<WebElement> itr = city.iterator();
-			while(itr.hasNext()) {
-			    Assert.assertTrue(itr.next().getText().length() > 0);
-			    System.out.println(itr.next().getText());
-			}
+			for (WebElement webElement : city) {
+	            String name = webElement.getText();
+	            Assert.assertTrue(name.length() > 0);
+	            System.out.println(name);
+	        }
 		}
 	}
 	
