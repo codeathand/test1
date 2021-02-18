@@ -15,9 +15,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Selectors {
 	
+	/** Timeout for waiting element **/
 	int timeoutInSeconds = 1;
 	
 	protected static WebDriver driver;
+	
+	/** Locators **/
 	private static By signin = By.xpath("//div[@class='header_user_info']//a[contains(text(), 'Sign in')]");
 	private By email = By.id("email");
 	private By password = By.id("passwd");
@@ -44,21 +47,22 @@ public class Selectors {
 		this.driver = driver;
 	}
 	
-	// load Chrome web driver
+	/** load Chrome web driver **/
 	public WebDriver loadDriver() {
-		System.setProperty("webdriver.chrome.driver", "D:\\eclipse\\chromedriver_win32_88.0.4324.96\\chromedriver.exe");
+//		System.out.println("Working Directory is " + System.getProperty("user.dir"));
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\chromedriver_win32_88.0.4324.96\\chromedriver.exe");
 		System.out.println("Web driver is loaded");
 		return driver = new ChromeDriver();
 	}
 	
-	// open page and maximize it
+	/** open page and maximize it **/
 	public void openPage() {
 		driver.get("http://automationpractice.com/index.php");
 		driver.manage().window().maximize();
 		System.out.println("Page is opened and maximized");
 	}
 	
-	// click on the BEST SELLERS tab
+	/** click on the BEST SELLERS tab **/
 	public void bestSellers() {
 		
 		// validate that home page is displayed and BEST SELLERS tab is displayed
@@ -71,7 +75,7 @@ public class Selectors {
 		}
 	}
 	
-	// click on the third item in the BEST SELLERS tab
+	/** click on the third item in the BEST SELLERS tab **/
 	public void thirdItem() {
 		
 		// validate that the third item is displayed in the BEST SELLERS tab
@@ -84,24 +88,24 @@ public class Selectors {
 		}
 	}
 	
-	// select L from the Size select
+	/** select L from the Size select **/
 	public void selectSize() {
 		driver.findElement(selectSize).click();
 		Select size = new Select(driver.findElement(selectSize));
 		size.selectByVisibleText("L");
 	}
 	
-	// select white color from the palette
+	/** select white color from the palette **/
 	public void selectColor() {
 		driver.findElement(whiteColor).click();
 	}
 	
-	// click on the Add to cart button
+	/** click on the Add to cart button **/
 	public void addToCart() {
 		driver.findElement(addToCartButton).click();
 	}
 	
-	// modal window with order data
+	/** modal window with order data **/
 	public void modalIsDisplayed() {
 		// validate that modal is displayed
 		WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
@@ -114,7 +118,7 @@ public class Selectors {
 		}
 	}
 	
-	// increase amount and check price changes
+	/** increase amount and check price changes **/
 	public void increaseAmount() throws InterruptedException {
 		// validate that shopping cart summary is displayed
 		WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
@@ -143,12 +147,12 @@ public class Selectors {
 		
 	}
 	
-	// click on the Proceed to checkout button in the 01. Summary section
+	/** click on the Proceed to checkout button in the 01. Summary section **/
 	public void proceedToCheckout2() {
 		driver.findElement(proceedToCheckout2).click();
 	}
 	
-	// login with temp email and password
+	/** login with temp email and password **/
 	public void login() {
 		
 		// validate that Sign in section is displayed
@@ -157,7 +161,7 @@ public class Selectors {
 		Assert.assertTrue(driver.findElement(email).isDisplayed());
 		
 		if (driver.findElement(email).isDisplayed()) {
-			System.out.println("02. Sign in section has been displayed");
+			System.out.println("Sign in section has been displayed");
 			
 			// enter email
 			driver.findElement(email).sendKeys("doxecav187@hancack.com");
@@ -174,7 +178,7 @@ public class Selectors {
 		}
 	}
 	
-	// city in address
+	/** city in address **/
 	public void cityInAddress() {
 		// validate that name of the city element is present
 		WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
@@ -192,12 +196,12 @@ public class Selectors {
 		}
 	}
 	
-	// click on the Proceed to checkout button in the 03. Address
+	/** click on the Proceed to checkout button in the 03. Address **/
 	public void proceedToCheckout3() {
 		driver.findElement(proceedToCheckout3).click();
 	}
 	
-	// Shipping section
+	/** Shipping section **/
 	public void checkTermsOfService() {
 		// validate that Shipping section is displayed
 		WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
@@ -210,12 +214,12 @@ public class Selectors {
 		}
 	}
 	
-	// click on the Proceed to checkout button in the 04. Shipping
+	/** click on the Proceed to checkout button in the 04. Shipping **/
 	public void proceedToCheckout4() throws InterruptedException {
 		driver.findElement(proceedToCheckout4).click();
 	}
 	
-	// payment method
+	/** payment method **/
 	public void selectBankWire() {
 		// validate that payment method section is displayed
 		WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
@@ -228,7 +232,7 @@ public class Selectors {
 		}
 	}
 	
-	// confirm order
+	/** confirm order **/
 	public void confirmOrder() {
 		// validate that ORDER SUMMARY section has been displayed
 		WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
@@ -241,7 +245,7 @@ public class Selectors {
 		}
 	}
 	
-	// order is completed
+	/** order is completed **/
 	public void orderConfirmation() {
 		// validate that ORDER CONFIRMATION section has been displayed
 		WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
